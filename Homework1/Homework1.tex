@@ -1,0 +1,101 @@
+\documentclass{ctexart}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+
+\title{作业一: 洛必达(L'Hospital)法则的证明}
+
+
+\author{郯许和 \\ 数学与应用数学 \\ 3190105342}
+
+\begin{document}
+
+\maketitle
+
+洛必达法则是在一定条件下通过分子分母分别求导再求极限确定不定式值的一种方法，有着广泛的应用。
+\section{问题描述}
+{\bf Theorem.} 假设 $f$ 和 $g$ 在 $(a,b)$ 上可导，并且 $g(x) \neq 0$ 对 $\forall x \in (a,b)$ 成立，其中 $-\infty \leq a < b \leq +\infty $，假设：
+\begin{align}
+  \frac{f'(x)}{g'(x)} \rightarrow A , x \rightarrow a^{+}.
+  \label{eq::f01}
+\end{align}
+
+当 $x \rightarrow a^{+}$ 时 ,如果有 $f(x) \rightarrow 0 ,g(x) \rightarrow 0 $ 或者 $g(x) \rightarrow \infty $ .
+
+那么就有
+\begin{align}
+  \lim _{x \rightarrow a^{+}} \frac{f(x)}{g(x)} = \lim _{x \rightarrow a^{+}} \frac{f'(x)}{g'(x)} = A
+  \label{eq::f02}
+\end{align}
+
+
+\section{证明}
+
+{\bf 考虑如下两种情况：}
+
+1.当 $x \rightarrow a^{+}$ 时，有 $f(x) \rightarrow 0 ,g(x) \rightarrow 0 $ 时：
+
+补充定义
+\begin{align}
+  f(a) = g(a) =0
+  \label{eq::f03}
+\end{align}
+
+以保持 $f,g$ 在 $[a,b)$ 上的连续性，由(\ref{eq::f03})，利用Cauchy中值定理，对 $\forall x \in (a,b)$ 有
+\begin{align}
+  \frac{f(x)}{g(x)} = \frac{f(x)-f(a)}{g(x)-g(a)} = \frac{f'(\xi)}{g'(\xi)}
+  \label{eq::f04}
+\end{align}
+
+这里 $a<\xi <x$，由此可见，当 $x\rightarrow a^{+}$ 时，有 $\xi \rightarrow a^{+}$. 因此有
+\begin{align}
+  \lim _{x \rightarrow a^{+}} \frac{f(x)}{g(x)} = \lim _{x \rightarrow a^{+}} \frac{f'(x)}{g'(x)} = A
+  \label{eq::f05}
+\end{align}
+
+2.当 $x \rightarrow a^{+}$ 时，有 $g(x) \rightarrow \infty $ 时:
+
+现在只考虑 $A$ 为有限数的情况，而当 $A =\pm \infty $ 时，可以类似证明.
+由(\ref{eq::f01})，对于任意给定的 $\varepsilon >0$，存在一个$\delta >0$，当 $x \in (a,a+\delta)$ 时，
+\begin{align}
+  A-\varepsilon < \frac{f'(x)}{g'(x)} < A + \varepsilon
+  \label{eq::f06}
+\end{align}
+
+因此，对 $(x,c) \subset (a,a+\delta)$，根据Cauchy中值定理，必定存在 $\xi \in (x,c)$，使得
+\begin{align}
+  A-\varepsilon <\frac{f(x)-f(c)}{g(x)-g(c)} = \frac{f'(\xi)}{g'(\xi)} < A + \varepsilon
+  \label{eq::f07}
+\end{align}
+
+但是因为
+\begin{align}
+  \frac{f(x)-f(c)}{g(x)-g(c)} = (\frac{f(x)}{g(x)} - \frac{f(c)}{g(x)})(1-\frac{g(c)}{g(x)})^{-1}
+  \label{eq:f08}
+\end{align}
+
+固定 $c$ ，对 $x\rightarrow a^{+}$ 取上极限得到
+\begin{align}
+  \lim _{x \rightarrow a^{+}} \sup \frac{f(x)}{g(x)} \leq A + \varepsilon
+  \label{eq::f09}
+\end{align}
+
+令 $\varepsilon \rightarrow 0$ 有
+\begin{align}
+  \lim _{x \rightarrow a^{+}} \sup \frac{f(x)}{g(x)} \leq A
+  \label{eq::f10}
+\end{align}
+
+利用同样的技巧，还可以得出
+\begin{align}
+  \lim _{x \rightarrow a^{+}} \inf \frac{f(x)}{g(x)} \geq A
+  \label{eq::f11}
+\end{align}
+
+结合(\ref{eq::f10}),(\ref{eq::f11})我们可以证明结论成立，即
+\begin{align}
+  \lim _{x \rightarrow a^{+}} \frac{f(x)}{g(x)} = \lim _{x \rightarrow a^{+}} \frac{f'(x)}{g'(x)} = A
+  \label{eq::f12}
+\end{align}
+
+\end{document}
